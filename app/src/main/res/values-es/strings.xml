@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calypso Divelog</string>
+    <string name="logbook">LogBook</string>
+    <string name="equipment">Equipo</string>
+    <string name="statistics">Estadísticas</string>
+    <string name="planning">Planning</string>
+    <string name="more">Más</string>
+    <string name="user_email">Usuario / Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="create_new_account">Crear cuenta nueva</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="email">Correo</string>
+    <string name="repeat_password">Repita la contraseña</string>
+    <string name="create_account">Crear cuenta</string>
+</resources>

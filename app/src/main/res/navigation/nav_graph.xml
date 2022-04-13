@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login">
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.calypsodivelog.view.Login"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_login_to_create_account"
+            app:destination="@id/createAccount" />
+        <action
+            android:id="@+id/action_login_to_diveLogHome"
+            app:destination="@id/diveLogHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccount"
+        android:name="com.example.calypsodivelog.view.CreateNewAccount"
+        android:label="Register" >
+        <action
+            android:id="@+id/action_create_account_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/diveLogHome"
+        android:name="com.example.calypsodivelog.view.DiveLogHomeRecycler"
+        android:label="UserHomePage" />
+    <fragment
+        android:id="@+id/equipmentHome"
+        android:name="com.example.calypsodivelog.view.EquipmentHome"
+        android:label="UserHomePage" />
+    <fragment
+        android:id="@+id/statisticsHome"
+        android:name="com.example.calypsodivelog.view.StatisticsHome"
+        android:label="StatisticsHome" />
+    <fragment
+        android:id="@+id/planningHome"
+        android:name="com.example.calypsodivelog.view.PlanningHome"
+        android:label="PlanningHome" />
+    <fragment
+        android:id="@+id/moreMenuHome"
+        android:name="com.example.calypsodivelog.view.MoreMenuHome"
+        android:label="MoreMenuHome" />
+</navigation>

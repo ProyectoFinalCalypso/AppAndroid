@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/diveLogHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_scuba_diving"
+        android:title="@string/logbook"/>
+    <item
+        android:id="@+id/equipmentHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_storage"
+        android:title="@string/equipment"/>
+    <item
+        android:id="@+id/statisticsHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_stats"
+        android:title="@string/statistics"/>
+    <item
+        android:id="@+id/planningHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_planning"
+        android:title="@string/planning"/>
+    <item
+        android:id="@+id/moreMenuHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_more_options"
+        android:title="@string/more"/>
+
+</menu>
