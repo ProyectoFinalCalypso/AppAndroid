@@ -82,7 +82,5 @@
             app:layout_constraintStart_toEndOf="@+id/tv_dive_max_length_title_stats"
             app:layout_constraintTop_toBottomOf="@+id/tv_max_depth_stats" />
 
-        <!-- Column 3 -->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

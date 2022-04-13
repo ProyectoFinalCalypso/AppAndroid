@@ -2,7 +2,7 @@ package com.example.calypsodivelog.model
 
 import java.util.*
 
-class DivelogFullListResponse() {
+class DivelogFullResponse() {
     // TODO: Añadir los campos que faltan y ¿convertir en data class?
     var avgDepth: Double = 0.0
     var buddiesDivingCollection: List<BuddiesDivingResponse> = emptyList()

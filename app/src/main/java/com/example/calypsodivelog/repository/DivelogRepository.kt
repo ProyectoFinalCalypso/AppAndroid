@@ -13,7 +13,7 @@ class DivelogRepository {
         apiService = RetrofitService.getRetrofit?.create(APIServiceREST::class.java)
     }
 
-    suspend fun getFullList() = apiService?.getDivelogFullListByNickname("divelog/$nickName/all")
+    suspend fun getDivelogById(id: Int) = apiService?.getDivelogById("divelog/id/$id")
 
     suspend fun getShortList() = apiService?.getDivelogShortListByNickname("divelog/$nickName/shortlist")
 }
