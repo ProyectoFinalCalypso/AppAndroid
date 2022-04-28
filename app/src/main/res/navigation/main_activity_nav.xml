@@ -7,26 +7,40 @@
     <fragment
         android:id="@+id/login"
         android:name="com.example.calypsodivelog.view.Login"
-        android:label="Login" >
+        android:label="Login"
+        tools:layout="@layout/login">
         <action
             android:id="@+id/action_login_to_create_account"
-            app:destination="@id/createAccount" />
+            app:destination="@id/createAccount"
+            app:popUpTo="@+id/login"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_login_to_diveLogHome"
-            app:destination="@id/diveLogHome" />
+            app:destination="@id/diveLogHome"
+            app:popUpTo="@+id/login"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/createAccount"
         android:name="com.example.calypsodivelog.view.CreateNewAccount"
-        android:label="Register" >
+        android:label="Register"
+        tools:layout="@layout/create_account">
         <action
             android:id="@+id/action_create_account_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/diveLogHome"
+            app:popUpTo="@+id/createAccount"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_createAccount_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@+id/createAccount"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/diveLogHome"
         android:name="com.example.calypsodivelog.view.DiveLogHomeRecycler"
-        android:label="UserHomePage" >
+        android:label="UserHomePage"
+        tools:layout="@layout/dive_log_fragment_recycler">
         <action
             android:id="@+id/action_diveLogHome_to_divelogDetails"
             app:destination="@id/divelogDetails" />
@@ -34,19 +48,23 @@
     <fragment
         android:id="@+id/equipmentHome"
         android:name="com.example.calypsodivelog.view.EquipmentHome"
-        android:label="UserHomePage" />
+        android:label="UserHomePage"
+        tools:layout="@layout/equipment_home"/>
     <fragment
         android:id="@+id/statisticsHome"
         android:name="com.example.calypsodivelog.view.StatisticsHome"
-        android:label="StatisticsHome" />
+        android:label="StatisticsHome"
+        tools:layout="@layout/statistics_home"/>
     <fragment
         android:id="@+id/planningHome"
         android:name="com.example.calypsodivelog.view.PlanningHome"
-        android:label="PlanningHome" />
+        android:label="PlanningHome"
+        tools:layout="@layout/planning_home"/>
     <fragment
         android:id="@+id/moreMenuHome"
         android:name="com.example.calypsodivelog.view.MoreMenuHome"
-        android:label="MoreMenuHome" />
+        android:label="MoreMenuHome"
+        tools:layout="@layout/more_menu_home"/>
     <fragment
         android:id="@+id/divelogDetails"
         android:name="com.example.calypsodivelog.view.DivelogDetails"

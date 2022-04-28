@@ -9,6 +9,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.calypsodivelog.model.DivelogFullResponse
 import com.example.calypsodivelog.model.DivelogShortListResponse
 import com.example.calypsodivelog.repository.DivelogRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class DiveLogViewModel(app: Application): AndroidViewModel(app) {
@@ -31,16 +34,24 @@ class DiveLogViewModel(app: Application): AndroidViewModel(app) {
     private val _itemSelected = MutableLiveData<DivelogShortListResponse>()
     var itemDataSelected: LiveData<DivelogShortListResponse> = _itemSelected
 
+    private var coroutineGetById: Job? = null
+
     fun setItemSelected(item: DivelogShortListResponse) {
         _itemSelected.value = item
+    }
+
+    fun resetItemSelected(){
+        _itemSelected.value = DivelogShortListResponse()
+        _divelog.value = DivelogFullResponse()
     }
 
     private val repository = DivelogRepository()
 
     // Carga la lista con datos minimos para el Recycler
-    fun chargeShortList(){
+    fun getShortList() {
         _errorConnectionRecycler.value = false
         _progressBarView.value = true
+
         viewModelScope.launch {
             try {
                 val response = repository.getShortList()
@@ -55,23 +66,22 @@ class DiveLogViewModel(app: Application): AndroidViewModel(app) {
             }catch (e : Exception){
                 _errorConnectionRecycler.value = true
                 _progressBarView.value = false
-                Log.e("DiveLogViewModel.kt(58)", e.toString())
+                Log.e("DiveLogViewModel.kt(69)", e.toString())
             }
         }
     }
 
     // Carga el Divelog seleccionada (por ID)
-    fun chargeDivelogById(id: Int){
+    fun getDivelogById(id: Int) {
         _errorConnectionItemView.value = false
         _progressBarView.value = true
-        viewModelScope.launch {
+
+        coroutineGetById = viewModelScope.launch {
             try {
                 val response = repository.getDivelogById(id)
 
                 if (response?.isSuccessful!!) {
                     _divelog.value = response.body() ?: DivelogFullResponse()
-                    val d = divelog.value?.idDivelog
-                    Log.i("==============> ", "Datos cargados: $d")
                     _progressBarView.value = false
                 } else {
                     _errorConnectionItemView.value = true
@@ -80,9 +90,13 @@ class DiveLogViewModel(app: Application): AndroidViewModel(app) {
             }catch (e : Exception){
                 _errorConnectionItemView.value = true
                 _progressBarView.value = false
-                Log.e("DiveLogViewModel.kt(83)", e.toString())
+                Log.e("DiveLogViewModel.kt(93)", e.toString())
             }
         }
+    }
+
+    fun cancelGetDivelogById(){
+        coroutineGetById?.cancel()
     }
 
 }

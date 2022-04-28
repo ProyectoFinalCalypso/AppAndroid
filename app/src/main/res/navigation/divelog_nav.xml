@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_page_nav"
+    app:startDestination="@id/diveLogRecycler">
+
+    <fragment
+        android:id="@+id/diveLogRecycler"
+        android:name="com.example.calypsodivelog.view.DiveLogRecycler"
+        android:label="fragment_blank"
+        tools:layout="@layout/dive_log_recycler" >
+        <action
+            android:id="@+id/action_diveLogRecycler_to_divelogDetails"
+            app:destination="@id/divelogDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/divelogDetails"
+        android:name="com.example.calypsodivelog.view.DivelogDetails"
+        android:label="divelog_details"
+        tools:layout="@layout/divelog_details" />
+</navigation>

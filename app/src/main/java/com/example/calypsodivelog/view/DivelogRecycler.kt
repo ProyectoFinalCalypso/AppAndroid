@@ -2,12 +2,12 @@ package com.example.calypsodivelog.view
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,32 +15,27 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calypsodivelog.R
-import com.example.calypsodivelog.databinding.DiveLogFragmentRecyclerBinding
+import com.example.calypsodivelog.databinding.DiveLogRecyclerBinding
 import com.example.calypsodivelog.model.DivelogShortListResponse
 import com.example.calypsodivelog.service.ClickListenerDivelogShortList
 import com.example.calypsodivelog.viewmodel.DiveLogViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class DiveLogHomeRecycler(): Fragment(), ClickListenerDivelogShortList{
+class DiveLogRecycler : Fragment(), ClickListenerDivelogShortList {
     lateinit var viewModel: DiveLogViewModel
     private var divelogAdapter = DiveLogHomeAdapter(this)
     private var headerAdapter = DiveLogHomeHeaderAdapter()
     private lateinit var recyclerView : RecyclerView
-    private lateinit var binding: DiveLogFragmentRecyclerBinding
+    private lateinit var binding: DiveLogRecyclerBinding
     private lateinit var navController : NavController
-
-   /*
-        TODO() ¿Cómo optimizar el rendimiento con la carga de datos en el Recycler?
-        En caso de tener 1000 Logs de buceo, cargarlos solo cuando lo pida el Recycler
-        ¡Comprobar lo que ocupa un Json de 1000 Divelog Short List!¿?
-    */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel =
-            activity?.let {
+        viewModel = activity?.let {
                 ViewModelProvider(it).get(DiveLogViewModel::class.java)
             }!!
+        // Carga los datos si todavía no se han cargado
+        viewModel.listShort.value ?: viewModel.getShortList()
     }
 
     override fun onCreateView(
@@ -49,23 +44,25 @@ class DiveLogHomeRecycler(): Fragment(), ClickListenerDivelogShortList{
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DiveLogFragmentRecyclerBinding.inflate(inflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // Carga de datos desde la API (si todavía no se han cargado)
-        viewModel.listShort.value ?: viewModel.chargeShortList()
-
-        // Controlador de Navegacion
-        navController = NavHostFragment.findNavController(this)
+        binding = DiveLogRecyclerBinding.inflate(inflater)
 
         // Recycler View
         recyclerView = binding.recyclerDivelogList
         recyclerView.layoutManager =
             LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = ConcatAdapter(headerAdapter, divelogAdapter)
+
+        // Instancia de Controlador de Navegacion
+        navController = NavHostFragment.findNavController(this)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Muestra el ultimo fragmento cargado de DivelogDetails, si hay alguno.
+        showLastFragment()
 
         // Observador de actualización de datos cargados
         viewModel.listShort.observe(viewLifecycleOwner) {
@@ -82,7 +79,6 @@ class DiveLogHomeRecycler(): Fragment(), ClickListenerDivelogShortList{
         viewModel.errorConnectionRecycler.observe(viewLifecycleOwner) { trueOrFalse ->
             if(trueOrFalse){
                 dialogErrorConnectApi()
-                Log.e("=========> ", "Cargar Error Dialog: $trueOrFalse")
             }
         }
     }
@@ -114,18 +110,24 @@ class DiveLogHomeRecycler(): Fragment(), ClickListenerDivelogShortList{
             .setTitle("Connection Error")
             .setMessage("Error de conexion con el servidor.")
             .setPositiveButton("Cancelar") { dialog, which -> }
-            .setNeutralButton("Reconectar"){dialog, which -> viewModel.chargeShortList()}
+            .setNeutralButton("Reconectar"){dialog, which -> viewModel.getShortList()}
+            .setCancelable(false)
             .show()
     }
 
-    // Funcion d ela Interfaz ClickListenerDivelogShortList
+    // Funcion de la Interfaz ClickListenerDivelogShortList
     override fun itemSelect(data: DivelogShortListResponse) {
         // Guarda la seleccion
         viewModel.setItemSelected(data)
 
-        // Navegacion hacia el Fragment del Detalle de Divelog
-        navController.navigate(R.id.action_diveLogHome_to_divelogDetails)
+        navController.navigate(R.id.action_diveLogRecycler_to_divelogDetails)
     }
+
+    private fun showLastFragment(){
+        if((viewModel.itemDataSelected.value?.maxDepth ?: 0.0) > 0 )
+            navController.navigate(R.id.action_diveLogRecycler_to_divelogDetails)
+    }
+
 }
 
 /*
@@ -145,6 +147,7 @@ class DiveLogHomeAdapter(private val listener: ClickListenerDivelogShortList) : 
         holder.bind(item)
 
         holder.itemView.setOnClickListener {
+            // Metodo sobreescrito en la clase 'DiveLogRecycler'
             listener.itemSelect(itemList[position])
         }
     }
@@ -204,7 +207,9 @@ class DiveLogHomeHeaderAdapter() : RecyclerView.Adapter<DiveLogHomeHeaderHolder>
     }
 
     override fun getItemCount(): Int {
-        return 1
+        // Si el objeto esta vacio, devuelve 0, en caso contrario devuelve 1.
+        // En este caso para comprobar si esta vacio, comprueba la propiedad 'maxDepth'
+        return if(itemD.maxDepth > 0) 1 else 0
     }
 
     fun setItems(divelog: DivelogShortListResponse) {
@@ -227,5 +232,5 @@ class DiveLogHomeHeaderHolder(val v: View) : RecyclerView.ViewHolder(v) {
         tvMaxDepth.text = dive.maxDepth.toString()
         tvDiveLength.text = dive.diveLength.toString()
     }
-}
 
+}
