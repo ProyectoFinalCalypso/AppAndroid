@@ -20,17 +20,19 @@ class CreateNewAccount : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CreateAccountBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         // Navigation Controller
         val navController = NavHostFragment.findNavController(this)
 
-        binding.btnCreateAccount.setOnClickListener(){
+        binding.btnCreateAccount.setOnClickListener{
             navController.navigate(R.id.action_create_account_to_login)
         }
 
         return rootView
     }
+
+
 }

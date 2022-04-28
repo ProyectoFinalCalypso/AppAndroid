@@ -1,11 +1,11 @@
 package com.example.calypsodivelog.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.calypsodivelog.R
 import com.example.calypsodivelog.databinding.LoginBinding
@@ -22,13 +22,13 @@ class Login : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = LoginBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
         val navController = NavHostFragment.findNavController(this)
 
-        binding.btnLogin.setOnClickListener(){
+        binding.btnLogin.setOnClickListener{
             if(checkLogin()){
                 // Login OK > Mostrar Datos
                 navController.navigate(R.id.action_login_to_diveLogHome)
@@ -38,12 +38,12 @@ class Login : Fragment() {
             }
         }
 
-        binding.btnRegister.setOnClickListener(){
+        binding.btnRegister.setOnClickListener{
             // Navegacion a pantalla de registro
             navController.navigate(R.id.action_login_to_create_account)
         }
 
-        binding.btnRecoveryPassword.setOnClickListener(){
+        binding.btnRecoveryPassword.setOnClickListener{
             // Formulario recuperacion contraseña
         }
 
@@ -51,10 +51,7 @@ class Login : Fragment() {
     }
 
     private fun checkLogin(): Boolean{
-        val name: String = binding.editTextUsername.text.toString()
-        val pass: String = binding.editTextPassword.text.toString()
-
-        //return name == "alexv" && pass == "pass"
+        // TODO(): Comprobar el login
         return true
     }
 }

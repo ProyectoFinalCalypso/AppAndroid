@@ -17,10 +17,9 @@ class StatisticsHome: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = StatisticsHomeBinding.inflate(inflater, container, false)
-        val rootView = binding.root
 
-        return rootView
+        return binding.root
     }
 }

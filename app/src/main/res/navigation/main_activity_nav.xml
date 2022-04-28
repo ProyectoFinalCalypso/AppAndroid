@@ -38,13 +38,9 @@
     </fragment>
     <fragment
         android:id="@+id/diveLogHome"
-        android:name="com.example.calypsodivelog.view.DiveLogHomeRecycler"
+        android:name="com.example.calypsodivelog.view.DivelogPageHome"
         android:label="UserHomePage"
-        tools:layout="@layout/dive_log_fragment_recycler">
-        <action
-            android:id="@+id/action_diveLogHome_to_divelogDetails"
-            app:destination="@id/divelogDetails" />
-    </fragment>
+        tools:layout="@layout/start_page_home"/>
     <fragment
         android:id="@+id/equipmentHome"
         android:name="com.example.calypsodivelog.view.EquipmentHome"
@@ -65,9 +61,4 @@
         android:name="com.example.calypsodivelog.view.MoreMenuHome"
         android:label="MoreMenuHome"
         tools:layout="@layout/more_menu_home"/>
-    <fragment
-        android:id="@+id/divelogDetails"
-        android:name="com.example.calypsodivelog.view.DivelogDetails"
-        android:label="divelog_details"
-        tools:layout="@layout/divelog_details" />
 </navigation>

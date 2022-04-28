@@ -14,4 +14,19 @@
     <string name="email">Email</string>
     <string name="repeat_password">Repeat password</string>
     <string name="create_account">Create account</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_error_message">Server connection error.</string>
+    <string name="connect">Connect</string>
+    <string name="reconnect">Reconnect</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="lifetime_dives">Lifetime Dives</string>
+    <string name="dive_number">Dive Number:</string>
+    <string name="date">Date</string>
+    <string name="close">Close</string>
+    <string name="replace">Replace</string>
+    <string name="delete">Delete</string>
+    <string name="time">Time</string>
 </resources>

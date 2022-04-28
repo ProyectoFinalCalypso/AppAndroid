@@ -5,9 +5,9 @@
         <shape android:shape="rectangle" >
             <solid android:color="@color/white"/>
             <corners android:radius="10dp"/>
-            <stroke android:color="@color/teal_200" android:width="1dp"/>
+            <stroke android:color="@color/teal_200" android:width="2dp"/>
             <size android:height="1dp" android:width="1dp"/>
-            <padding android:right="5dp" android:left="5dp" android:top="1dp" android:bottom="1dp"/>
+            <padding android:right="8dp" android:left="8dp" android:top="3dp" android:bottom="3dp"/>
         </shape>
     </item>
 
@@ -15,19 +15,19 @@
         <shape android:shape="rectangle">
             <solid android:color="@color/white"/>
             <corners android:radius="10dp"/>
-            <stroke android:color="@android:color/darker_gray" android:width="1dp"/>
+            <stroke android:color="@android:color/darker_gray" android:width="2dp"/>
             <size android:height="1dp" android:width="1dp"/>
-            <padding android:right="5dp" android:left="5dp" android:top="1dp" android:bottom="1dp"/>
+            <padding android:right="8dp" android:left="8dp" android:top="3dp" android:bottom="3dp"/>
         </shape>
     </item>
 
     <item android:state_enabled="false" >
         <shape android:shape="rectangle">
-            <solid android:color="@android:color/white"/>
+            <solid android:color="#e3e3e3"/>
             <corners android:radius="10dp"/>
-            <stroke android:color="@android:color/white" android:width="1dp"/>
+            <stroke android:color="@android:color/darker_gray" android:width="2dp"/>
             <size android:height="1dp" android:width="1dp"/>
-            <padding android:right="5dp" android:left="5dp" android:top="1dp" android:bottom="1dp"/>
+            <padding android:right="8dp" android:left="8dp" android:top="3dp" android:bottom="3dp"/>
         </shape>
     </item>
 </selector>

@@ -1,5 +1,7 @@
 package com.example.calypsodivelog.model
 
+import java.time.LocalDateTime
+import java.time.Month
 import java.util.*
 
 class DivelogShortListResponse(){
@@ -7,7 +9,7 @@ class DivelogShortListResponse(){
     var avgDepth: Double = 0.0
     var buddiesDivingCollection: List<BuddiesDivingResponse> = emptyList()
     var buddyName: String = ""
-    var city: String = ""
+    var site: String = ""
     var diveLength: Int = 0
     var idDivelog: Int = 0
     var location: String = ""

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.calypsodivelog.databinding.StartPageHomeBinding
 
-class StartPageHome: Fragment(){
+class DivelogPageHome: Fragment(){
     private lateinit var binding: StartPageHomeBinding
 
     override fun onCreateView(

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="105dp"
+    android:layout_height="120dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp"
     android:layout_marginTop="5dp"
@@ -23,7 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:text=""
+            android:text="@string/lifetime_dives"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,24 +33,35 @@
         <!-- Column 1 -->
 
         <TextView
+            android:id="@+id/tv_total_dives_title_stats"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Total Dives:"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_divelog_stats" />
+
+        <TextView
             android:id="@+id/tv_max_depth_title_stats"
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="Max Depth:"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_header_divelog_stats" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_dives_title_stats" />
 
 
         <TextView
             android:id="@+id/tv_dive_max_length_title_stats"
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Max Dive Length:"
+            android:text="Max Length:"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_max_depth_title_stats" />
@@ -58,16 +69,28 @@
         <!-- Column 2 -->
 
         <TextView
+            android:id="@+id/tv_total_dives"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="55"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_max_depth_title_stats"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_divelog_stats" />
+
+        <TextView
             android:id="@+id/tv_max_depth_stats"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="27,9 m"
+            tools:text="27,9 m"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_max_depth_title_stats"
-            app:layout_constraintTop_toBottomOf="@+id/tv_header_divelog_stats" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_dives" />
 
 
         <TextView
@@ -76,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="59 min"
+            tools:text="59 min"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_dive_max_length_title_stats"

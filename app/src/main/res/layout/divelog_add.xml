@@ -1,14 +1,605 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DivelogAdd">
+    android:orientation="vertical"
+    tools:context=".view.DivelogAdd">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Encapsula todos los Layouts, menos el ProgressBar -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- Menu Superior -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menuDivelogAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageButton
+                android:id="@+id/btn_add_divelog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/ic_menu_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Divelog"
+                android:textSize="16sp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_setting"
+                app:layout_constraintStart_toEndOf="@+id/btn_add_divelog"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/ic_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Línea Divisora -->
+        <View
+            android:id="@+id/dividing_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/purple_500" />
+
+        <!-- Bloque datos Divelog -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/fragmentDataLayoutDivelogDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <!-- Line Dive Number -->
+                    <LinearLayout
+                        android:id="@+id/DiveNumberLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:layout_weight="0.01"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.94"
+                            android:text="@string/dive_number"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDiveNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="number"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="185" />
+                    </LinearLayout>
+
+                    <!-- Line Max Depth -->
+                    <LinearLayout
+                        android:id="@+id/MaxDepthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:layout_weight="0.01"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.94"
+                            android:text="Max Depth:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etMaxDepth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="55.6 m" />
+                    </LinearLayout>
+
+                    <!-- Line AVG Depth-->
+                    <LinearLayout
+                        android:id="@+id/AvgDepthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="AVG Depth:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etAvgDepth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="25.65 m" />
+                    </LinearLayout>
+
+                    <!-- Line Dive Length -->
+                    <LinearLayout
+                        android:id="@+id/DiveLengthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:layout_weight="0.01"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.94"
+                            android:text="Dive Length:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDiveLength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="number"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="62 min" />
+                    </LinearLayout>
+
+                    <!-- Line Temp -->
+                    <LinearLayout
+                        android:id="@+id/TempLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Temp:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etTemp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="27.5 º" />
+                    </LinearLayout>
+
+                    <!-- Line Gas Consum -->
+                    <LinearLayout
+                        android:id="@+id/GasConsumLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gas Consumption:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etGasConsum"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="17.55 l/min" />
+                    </LinearLayout>
+
+                    <!-- Line Deco Time -->
+                    <LinearLayout
+                        android:id="@+id/DecoTimeLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Deco Time:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDecoTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="28 min" />
+                    </LinearLayout>
+
+                    <!-- Line Buddies -->
+                    <LinearLayout
+                        android:id="@+id/BuddyNameLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Buddy: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etBuddyName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="Jose Antonio" />
+                    </LinearLayout>
+
+                    <!-- Line Location -->
+                    <LinearLayout
+                        android:id="@+id/LocationLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Location: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="Calpe" />
+                    </LinearLayout>
+
+                    <!-- Line Site -->
+                    <LinearLayout
+                        android:id="@+id/SiteLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Site: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etSite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="El Racó" />
+                    </LinearLayout>
+
+                    <!-- Line Date -->
+                    <LinearLayout
+                        android:id="@+id/DateLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:layout_weight="0.01"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.94"
+                            android:text="@string/date"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/btnDatePicker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_calendar"
+                                android:backgroundTint="#FFFFFF"/>
+
+                            <TextView
+                                android:id="@+id/tvDate"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.9"
+                                android:textAlignment="textEnd"
+                                android:textSize="18sp"
+                                tools:text="22/04/2015" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Line Time -->
+                    <LinearLayout
+                        android:id="@+id/TimeLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:layout_weight="0.01"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.94"
+                            android:text="@string/time"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/btnTimePicker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_time"
+                                android:backgroundTint="#FFFFFF"/>
+
+                            <TextView
+                                android:id="@+id/tvTime"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.9"
+                                android:textAlignment="textEnd"
+                                android:textSize="18sp"
+                                tools:text="8:53" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Line Country -->
+                    <LinearLayout
+                        android:id="@+id/CountryLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Country:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etCountry"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="España" />
+                    </LinearLayout>
+
+                    <!-- Line Diving Center-->
+                    <LinearLayout
+                        android:id="@+id/DivingCenterLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Diving Center:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDivingCenter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="De infantería" />
+                    </LinearLayout>
+
+                    <!-- Photos RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerPhotosDivelog"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_background_custom"/>
+
+                    <!-- Button Add Photo (RecyclerView) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="Add Photo" />
+
+                    <!-- Line Notes -->
+                    <LinearLayout
+                        android:id="@+id/NotesLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notes:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etNotes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="start|top"
+                            android:inputType="textMultiLine" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* Datos obligatorios"
+                        android:textColor="@color/red"
+                        android:layout_weight="0.01"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="end"/>
+
+                    <!-- Line Buttons -->
+                    <LinearLayout
+                        android:id="@+id/ButtonsLinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCancelDivelogPost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="Cancel" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSaveDivelogPost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

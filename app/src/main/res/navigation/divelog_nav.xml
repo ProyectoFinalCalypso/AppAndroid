@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_diveLogRecycler_to_divelogDetails"
             app:destination="@id/divelogDetails" />
+        <action
+            android:id="@+id/action_diveLogRecycler_to_divelogAdd"
+            app:destination="@id/divelogAdd" />
     </fragment>
     <fragment
         android:id="@+id/divelogDetails"
         android:name="com.example.calypsodivelog.view.DivelogDetails"
         android:label="divelog_details"
-        tools:layout="@layout/divelog_details" />
+        tools:layout="@layout/divelog_details" >
+        <action
+            android:id="@+id/action_divelogDetails_to_divelogAdd"
+            app:destination="@id/divelogAdd" />
+    </fragment>
+    <fragment
+        android:id="@+id/divelogAdd"
+        android:name="com.example.calypsodivelog.view.DivelogAdd"
+        android:label="divelog_add"
+        tools:layout="@layout/divelog_add" >
+        <action
+            android:id="@+id/action_divelogAdd_to_diveLogRecycler"
+            app:destination="@id/diveLogRecycler" />
+    </fragment>
 </navigation>

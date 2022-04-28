@@ -4,112 +4,494 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.DivelogDetails">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Detalle del Divelog"
-        android:textSize="40dp"
+    <!-- Encapsula todos los Layouts, menos el ProgressBar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvIdDivelog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Id Divelog: "
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <!-- Menu Superior -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menuDivelogDetails"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-    <TextView
-        android:id="@+id/tvIdDivelog_Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/tvIdDivelog"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="30" />
+            <ImageButton
+                android:id="@+id/btn_add_divelog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/ic_menu_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvNumDive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Num Dive: "
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvIdDivelog" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Divelog Details"
+                android:textSize="16sp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_setting"
+                app:layout_constraintStart_toEndOf="@+id/btn_add_divelog"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvNumDive_Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/tvNumDive"
-        app:layout_constraintTop_toBottomOf="@+id/tvIdDivelog_Data"
-        tools:text="85" />
+            <ImageButton
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#FFFFFF"
+                android:src="@drawable/ic_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvDateDivelog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Date: "
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumDive" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/tvDateDivelog_Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/tvDateDivelog"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumDive_Data"
-        tools:text="25/04/2022" />
+        <!-- Línea Divisora -->
+        <View
+            android:id="@+id/dividing_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/purple_500" />
 
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Location: "
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateDivelog" />
+        <!-- Bloque datos Divelog -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvLocation_Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/tvLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateDivelog_Data"
-        tools:text="Naranjito" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/fragmentDataLayoutDivelogDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <!-- Line Dive Number -->
+                    <LinearLayout
+                        android:id="@+id/DiveNumberLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/dive_number"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDiveNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="number"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="185" />
+                    </LinearLayout>
+
+                    <!-- Line Max Depth -->
+                    <LinearLayout
+                        android:id="@+id/MaxDepthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Max Depth:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etMaxDepth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="55.6 m" />
+                    </LinearLayout>
+
+                    <!-- Line AVG Depth-->
+                    <LinearLayout
+                        android:id="@+id/AvgDepthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="AVG Depth:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etAvgDepth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="25.65 m" />
+                    </LinearLayout>
+
+                    <!-- Line Dive Length -->
+                    <LinearLayout
+                        android:id="@+id/DiveLengthLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Dive Length:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDiveLength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="number"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="62 min" />
+                    </LinearLayout>
+
+                    <!-- Line Temp -->
+                    <LinearLayout
+                        android:id="@+id/TempLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Temp:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etTemp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="27.5 º" />
+                    </LinearLayout>
+
+                    <!-- Line Gas Consum -->
+                    <LinearLayout
+                        android:id="@+id/GasConsumLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gas Consumption:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etGasConsum"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="17.55 l/min" />
+                    </LinearLayout>
+
+                    <!-- Line Deco Time -->
+                    <LinearLayout
+                        android:id="@+id/DecoTimeLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Deco Time:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDecoTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="28 min" />
+                    </LinearLayout>
+
+                    <!-- Line Buddies -->
+                    <LinearLayout
+                        android:id="@+id/BuddyNameLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Buddy: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etBuddyName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="Jose Antonio" />
+                    </LinearLayout>
+
+                    <!-- Line Location -->
+                    <LinearLayout
+                        android:id="@+id/LocationLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Location: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="Calpe" />
+                    </LinearLayout>
+
+                    <!-- Line Site -->
+                    <LinearLayout
+                        android:id="@+id/SiteLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Site: "
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etSite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="El Racó" />
+                    </LinearLayout>
+
+                    <!-- Line Date -->
+                    <LinearLayout
+                        android:id="@+id/DateLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/date"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="datetime"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="22/04/2015" />
+                    </LinearLayout>
+
+                    <!-- Line Country -->
+                    <LinearLayout
+                        android:id="@+id/CountryLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Country:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etCountry"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="España" />
+                    </LinearLayout>
+
+                    <!-- Line Diving Center-->
+                    <LinearLayout
+                        android:id="@+id/DivingCenterLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Diving Center:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etDivingCenter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="text"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp"
+                            tools:text="De infantería" />
+                    </LinearLayout>
+
+                    <!-- Photos RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerPhotosDivelog"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_background_custom"/>
+
+                    <!-- Line Notes -->
+                    <LinearLayout
+                        android:id="@+id/NotesLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notes:"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/etNotes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="start|top"
+                            android:inputType="textMultiLine" />
+                    </LinearLayout>
+
+                    <!-- Line Buttons -->
+                    <LinearLayout
+                        android:id="@+id/ButtonsLinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEditDivelog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edit" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCancelEditingDivelog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="Cancel" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSaveDivelog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

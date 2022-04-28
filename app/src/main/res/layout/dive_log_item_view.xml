@@ -11,6 +11,7 @@
     android:layout_marginEnd="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_item_divelog"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -84,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="27,9 m"
+            tools:text="27,9 m"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_max_depth_title"
@@ -96,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="13,1 m"
+            tools:text="13,1 m"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_avg_depth_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_max_depth" />
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="59 min"
+            tools:text="59 min"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dive_length_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_avg_depth" />
@@ -156,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="22,5 ºC"
+            tools:text="22,5 ºC"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_temp_title"
@@ -168,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Roca Langosta"
+            tools:text="Roca Langosta"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_site_title"
@@ -180,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Jorge y Alex"
+            tools:text="Jorge y Alex"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_buddy_title"
